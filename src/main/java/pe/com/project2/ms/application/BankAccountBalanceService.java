@@ -5,5 +5,6 @@ import reactor.core.publisher.Mono;
 
 public interface BankAccountBalanceService {
     Mono<BankAccountBalance> save(BankAccountBalance bankAccountBalance);
+
     Mono<BankAccountBalance> findByBankAccountId(String bankAccountId);
 }

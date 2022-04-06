@@ -12,7 +12,6 @@ import pe.com.project2.ms.domain.exception.NotFoundException;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 @Service
@@ -31,7 +30,7 @@ public class WithdrawalService implements WithdrawalUseCase {
                         return this.applyFee(bankAccountBalance, transaction)
                                 .flatMap(bankAccountBalanceRepository::save);
                     } else {
-                        if(bankAccountBalance.getBalance().compareTo(transaction.getAmount()) < 0){
+                        if (bankAccountBalance.getBalance().compareTo(transaction.getAmount()) < 0) {
                             return Mono.error(new RuntimeException("Saldo insufiente para realizar esta operacion"));
                         }
                         bankAccountBalance.debitMoney(transaction);
